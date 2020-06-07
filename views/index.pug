@@ -1,0 +1,30 @@
+doctype html
+html(lang='en')
+    head
+        title Github Status Web Scraper
+
+        meta(charset='utf-8')
+        meta(http-equiv='X-UA-Compatible', content='IE-edge')
+        meta(name='viewport', content='width=device-width, initial-scale')
+        
+        link(rel='stylesheet', href='https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap')
+        link(rel='stylesheet', href='/css/reset.css')
+        link(rel='stylesheet', href='/css/styles.css')
+        link(rel='stylesheet', href='/css/responsive-layouts.css')
+    body
+        .container
+            h1 Github Status
+            .site-operations
+                each scrapeDataPoint, i in siteStatusJSON
+                    if scrapeDataPoint._name != 'Visit www.githubstatus.com for more information'
+                        if scrapeDataPoint._name != 'Other'
+                            .operation-row
+                                .operation-name= scrapeDataPoint._name
+                                if scrapeDataPoint._status == 'Operational'
+                                    .operation-status.normal= scrapeDataPoint._status
+                                else
+                                    .operation-status= scrapeDataPoint._status
+            button Refresh Status
+        script(src='/scripts/script.js')
+
+        
