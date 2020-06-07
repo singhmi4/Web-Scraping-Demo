@@ -7,6 +7,10 @@ const app = express();
 // Set Public Folder
 app.use(express.static(path.join(__dirname, 'public')));
 
+// set the port of our application
+// process.env.PORT lets the port be set by Heroku
+const port = process.env.PORT || 8080;
+
 // Load View Engine
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -31,7 +35,7 @@ app.post('/clicked', (req, res) => {
     res.render('index')
 })
 
-app.listen(3000, () => {
+app.listen(port, () => {
     console.log(`Server starting on port 3000....`);
 })
 
