@@ -12,6 +12,7 @@
 
 * Node
 * Express
+* Request
 * Request-Promise
 * Cheerio
 * Pug
